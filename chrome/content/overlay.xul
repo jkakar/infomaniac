@@ -18,6 +18,8 @@
   <popup id="contentAreaContextMenu">
     <menuitem label="More on Fluidinfo…"
               oncommand="infomaniac.contextLink.onClick();" />
+    <menuitem label="Show popup"
+              oncommand="infomaniac.popup.onClick();" />
   </popup>
 
   <keyset id="mainKeyset">

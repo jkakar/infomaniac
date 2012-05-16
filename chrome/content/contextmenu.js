@@ -10,10 +10,36 @@ infomaniac.FluidinfoLink.prototype.onClick = function() {
 };
 
 
+// Popup shows up a popup notification.
+infomaniac.Popup = function() {};
+
+// Handle a popup request.
+infomaniac.Popup.prototype.onClick = function() {
+    var image = document.createElement('image');
+    image.setAttribute('src', 'chrome://infomaniac/skin/fluidinfo-16x16.png');
+    image.style.cssText = 'padding-left: 4px; padding-right: 4px;';
+
+    var p = document.createElement('p');
+    p.textContent = '3 comments fom your friends';
+
+    var container = document.createElement('bbox');
+    container.style.cssText = 'padding-top: 4px; padding-bottom: 4px;';
+    container.appendChild(image);
+    container.appendChild(p);
+
+    var notificationBox = gBrowser.getNotificationBox();
+    notificationBox.appendChild(container);
+};
+
+
 // Initialize the extension.
 infomaniac.load = function() {
     if (infomaniac.contextLink === undefined) {
         infomaniac.contextLink = new infomaniac.FluidinfoLink();
+    }
+
+    if (infomaniac.popup == undefined) {
+        infomaniac.popup = new infomaniac.Popup();
     }
 };
 
